@@ -29,7 +29,7 @@ def intents_callback(hermes, intentMessage) :
             resul = ""
             
             if enc == 1 :
-                        hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe"])
+                        hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe","louisros:name"])
                         enc = 0
             elif enc == -1 :
                         hermes.publish_end_session(intentMessage.session_id, resul)
@@ -42,7 +42,7 @@ def intents_callback(hermes, intentMessage) :
             if v != 'fin' :
                   n = n + v
                   enc = 1
-                  hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe"])
+                  hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe","louisros:name"])
             else:
                   resul = n
                   enc = -1
