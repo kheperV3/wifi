@@ -27,11 +27,11 @@ def intents_callback(hermes, intentMessage) :
             v = ""
             enc = 1
             resul = ""
-            while 1==1 :
-                  if enc == 1 :
+            
+            if enc == 1 :
                         hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe"])
                         enc = 0
-                  elif enc == -1 :
+            elif enc == -1 :
                         hermes.publish_end_session(intentMessage.session_id, resul)
                         
             
