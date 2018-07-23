@@ -23,10 +23,17 @@ def intents_callback(hermes, intentMessage) :
   
 
     if intentMessage.intent.intent_name == 'louisros:name' :
-            n = ""
-            v = ""
-            while v != 'fin' :
-                  hermes.publish_continue_session(intentMessage.session_id,"premier caractère",["louisros:signe"])
+            global n = ""
+            global v = ""
+            global enc = 1
+            global resul = ""
+            while 1==1 :
+                  if enc == 1 :
+                        hermes.publish_continue_session(intentMessage.session_id,"ok",["louisros:signe"])
+                        enc = 0
+                  elif enc == -1 :
+                        hermes.publish_end_session(intentMessage.session_id, resul)
+                        
             
                         
       
@@ -34,18 +41,13 @@ def intents_callback(hermes, intentMessage) :
             v = intentMessage.slots.s.first().value            
             if v != 'fin' :
                   n = n + v
+                  enc = 1
+            
             else:
                   resul = n
-                 
-                      
-            
-    
-            
+                  enc = -1
                   
-              
-    
-    current_session_id = intentMessage.session_id
-    hermes.publish_end_session(current_session_id, resul)
+            hermes.publish_end_session(intentMessage.session_id, "")
 
 
 if __name__ == "__main__":
