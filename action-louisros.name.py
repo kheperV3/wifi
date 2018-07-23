@@ -23,7 +23,7 @@ def intents_callback(hermes, intentMessage) :
     
 
     if intentMessage.intent.intent_name == 'louisros:name' :
-            global n = ""
+            n = ""
             hermes.publish_continue_session(intentMessage.session_id,"premier caractère",["louisros:signe"])
             
                         
