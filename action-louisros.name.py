@@ -20,11 +20,13 @@ def CString(s):
       return s 
 
 def intents_callback(hermes, intentMessage) : 
-    
+    global v
+    global n
 
     if intentMessage.intent.intent_name == 'louisros:name' :
             n = ""
-            hermes.publish_continue_session(intentMessage.session_id,"premier caractère",["louisros:signe"])
+            while v != 'fin' :
+                  hermes.publish_continue_session(intentMessage.session_id,"premier caractère",["louisros:signe"])
             
                         
       
@@ -33,7 +35,6 @@ def intents_callback(hermes, intentMessage) :
             
             if v != 'fin' :
                   n = n + v
-                  hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe"])
             else:
                   resul = n
                  
