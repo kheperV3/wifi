@@ -23,10 +23,10 @@ def intents_callback(hermes, intentMessage) :
   
 
     if intentMessage.intent.intent_name == 'louisros:name' :
-            global n = ""
-            global v = ""
-            global enc = 1
-            global resul = ""
+            n = ""
+            v = ""
+            enc = 1
+            resul = ""
             while 1==1 :
                   if enc == 1 :
                         hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe"])
