@@ -37,8 +37,7 @@ def intents_callback(hermes, intentMessage) :
     elif intentMessage.intent.intent_name == 'louisros:signe' :
             v = intentMessage.slots.s.first().value 
        
-            n = n + v
-            hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe"])
+            resul = v
             
                   
               
