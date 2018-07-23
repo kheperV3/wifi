@@ -42,12 +42,12 @@ def intents_callback(hermes, intentMessage) :
             if v != 'fin' :
                   n = n + v
                   enc = 1
-            
+                  hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe"])
             else:
                   resul = n
                   enc = -1
                   
-            hermes.publish_end_session(intentMessage.session_id, "ok")
+                  hermes.publish_end_session(intentMessage.session_id, resul)
 
 
 if __name__ == "__main__":
