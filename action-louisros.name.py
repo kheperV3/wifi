@@ -47,7 +47,7 @@ def intents_callback(hermes, intentMessage) :
                   resul = n
                   enc = -1
                   
-            hermes.publish_end_session(intentMessage.session_id, "")
+            hermes.publish_end_session(intentMessage.session_id, "ok")
 
 
 if __name__ == "__main__":
