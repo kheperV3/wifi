@@ -32,7 +32,7 @@ def intents_callback(hermes, intentMessage) :
             
             v = intentMessage.slots.s.first().value 
             if v != 'fin' :
-                  if v == 'i grec':
+                  if v == 'igrec':
                         v = 'y'
                   n = n + v           
                   hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe","louisros:name"])
