@@ -24,19 +24,9 @@ def intents_callback(hermes, intentMessage) :
 
     if intentMessage.intent.intent_name == 'louisros:name' :
             global n 
-            n = ""
-            
-            enc = 1
-            resul = ""
-            
-            if enc == 1 :
-                        hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe","louisros:name"])
-                        enc = 0
-            elif enc == -1 :
-                        hermes.publish_end_session(intentMessage.session_id, resul)
-                        
-            
-                        
+            n = ""       
+            hermes.publish_continue_session(intentMessage.session_id,"premier caractère",["louisros:signe","louisros:name"])
+                                           
       
     elif intentMessage.intent.intent_name == 'louisros:signe' :
             
