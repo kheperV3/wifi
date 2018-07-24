@@ -23,8 +23,9 @@ def intents_callback(hermes, intentMessage) :
   
 
     if intentMessage.intent.intent_name == 'louisros:name' :
-            global n = ""
-            v = ""
+            global n 
+            n = ""
+            
             enc = 1
             resul = ""
             
