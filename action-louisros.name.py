@@ -38,8 +38,8 @@ def intents_callback(hermes, intentMessage) :
                         
       
     elif intentMessage.intent.intent_name == 'louisros:signe' :
-            hermes.publish_end_session(intentMessage.session_id, "coucou")
-            v = intentMessage.slots.s.first().value            
+            v = intentMessage.slots.s.first().value 
+            hermes.publish_end_session(intentMessage.session_id, v)
             if v != 'fin' :
                   n = n + v
                   enc = 1
