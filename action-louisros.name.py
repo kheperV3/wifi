@@ -43,7 +43,7 @@ def intents_callback(hermes, intentMessage) :
             v = intentMessage.slots.s.first().value 
             if v != 'fin' :
                   n = n + v
-                  hermes.publish_end_session(intentMessage.session_id, v)
+                  #hermes.publish_end_session(intentMessage.session_id, v)
                   enc = 1
                   hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe","louisros:name"])
             else:
