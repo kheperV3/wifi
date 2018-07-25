@@ -30,13 +30,15 @@ def intents_callback(hermes, intentMessage) :
                                            
       
     elif intentMessage.intent.intent_name == 'louisros:signe' :
-            
+            s = ""
+            m = ""
+            t = ""
             s = intentMessage.slots.s.first().value 
             m = intentMessage.slots.m.first().value
             t = intentMessage.slots.t.first().value
             if s != 'fin' :
-                  #if m != "" :
-                  #s = m[0]
+                  if m != "" :
+                        s = m[0]
                   if t == 'grand' :
                         s = string.upper(s)                    
                   n = n + s          
