@@ -40,7 +40,8 @@ def intents_callback(hermes, intentMessage) :
                   if m != "" :
                         s = m[0]
                   if t == 'grand' :
-                  #s = string.upper(s)                    
+                  #s = string.upper(s) 
+                        x = 0
                   n = n + s          
                   hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe","louisros:name"])
             else:
