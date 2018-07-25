@@ -25,7 +25,9 @@ def intents_callback(hermes, intentMessage) :
 
     if intentMessage.intent.intent_name == 'louisros:name' :
             global n 
-            n = ""       
+            global nn
+            n = "" 
+            nn = ""
             hermes.publish_continue_session(intentMessage.session_id,"premier caractère",["louisros:signe","louisros:name"])
                                            
       
@@ -46,12 +48,13 @@ def intents_callback(hermes, intentMessage) :
                   if t == 'grand' :
                         s = string.upper(s) 
                         
-                  n = n + s          
+                  n = n + " " + s  
+                  nn = nn + s
                   hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe","louisros:name"])
             else:
-                  resul = n
+                  
                           
-                  hermes.publish_end_session(intentMessage.session_id, resul)
+                  hermes.publish_end_session(intentMessage.session_id, n)
 
 
 if __name__ == "__main__":
