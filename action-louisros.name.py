@@ -4,6 +4,7 @@
 from hermes_python.hermes import Hermes
 import time
 import datetime
+import string
 
 MQTT_IP_ADDR = "localhost"
 MQTT_PORT = 1883
@@ -30,12 +31,15 @@ def intents_callback(hermes, intentMessage) :
       
     elif intentMessage.intent.intent_name == 'louisros:signe' :
             
-            v = intentMessage.slots.s.first().value 
-            if v != 'fin' :
-                  if v == 'grec':
-                        x = 0
-                        v = 'y'
-                  n = n + v           
+            s = intentMessage.slots.s.first().value 
+            m = intentMessage.slots.m.first().value
+            t = intentMessage.slots.t.first().value
+            if s != 'fin' :
+                  if m != 0 :
+                        s = m[0]
+                  if t == 'grand' :
+                        s = string.upper(s)                    
+                  n = n + s          
                   hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe","louisros:name"])
             else:
                   resul = n
