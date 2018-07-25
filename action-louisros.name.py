@@ -35,7 +35,7 @@ def intents_callback(hermes, intentMessage) :
             m = intentMessage.slots.m.first().value
             t = intentMessage.slots.t.first().value
             if s != 'fin' :
-                  if m != None :
+                  if m != "" :
                         s = m[0]
                   if t == 'grand' :
                         s = string.upper(s)                    
