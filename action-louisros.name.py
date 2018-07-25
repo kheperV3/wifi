@@ -40,7 +40,7 @@ def intents_callback(hermes, intentMessage) :
                   m = intentMessage.slots.m.first().value
             if len(intentMessage.slots.t):
                   t = intentMessage.slots.t.first().value
-            if s != 'fin' :
+            if t != 'fin' :
                   if m != "" :
                         s = m[0]
                   if t == 'grand' :
