@@ -28,8 +28,7 @@ def intents_callback(hermes, intentMessage) :
             global nn
             n = "" 
             nn = ""
-            hermes.publish_continue_session(intentMessage.session_id,"début des opérations",[])
-            time.sleep(2)
+
             hermes.publish_continue_session(intentMessage.session_id,"premier caractère",["louisros:signe","louisros:name"])
                                            
       
