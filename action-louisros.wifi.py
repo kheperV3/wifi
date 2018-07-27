@@ -30,7 +30,7 @@ def intents_callback(hermes, intentMessage) :
             ssid = "" 
             key = ""
             phase = 0
-            hermes.publish_continue_session(intentMessage.session_id,"nouvel SSID premier caractère",["louisros:signe"])
+            hermes.publish_continue_session(intentMessage.session_id,"nouvel SSID premier caractère",["louisros:signe","louisros:keyOK"])
                                            
       
     elif intentMessage.intent.intent_name == 'louisros:signe' :
@@ -53,7 +53,7 @@ def intents_callback(hermes, intentMessage) :
                         
                   n = n + s  
                   
-                  hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe"])
+                  hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe","louisros:keyOK")
             else:
                   if phase == 0 :
                         ssid = n
