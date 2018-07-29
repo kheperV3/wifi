@@ -73,5 +73,5 @@ def intents_callback(hermes, intentMessage) :
             hermes.publish_continue_session(intentMessage.session_id,"nouvelle clé premier caractère",["louisros:signe","louisros:changeSSID"])
  if __name__ == "__main__":
     with Hermes(MQTT_ADDR) as h:           
-        h.subscribe_intents(intents_callback).start()
+            h.subscribe_intents(intents_callback).start()
         
