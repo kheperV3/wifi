@@ -30,6 +30,7 @@ def intents_callback(hermes, intentMessage) :
             ssid = "" 
             key = ""
             phase = 0
+            hermes.publish_end_session(intentMessage.session_id,"sur la bonne voie")
             hermes.publish_continue_session(intentMessage.session_id,"nouvel SSID premier caractère",["louisros:signe","louisros:keyOK"])
                                            
       
