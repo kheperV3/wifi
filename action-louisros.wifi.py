@@ -14,11 +14,8 @@ def intents_callback(hermes, intentMessage) :
  
     if intentMessage.intent.intent_name == 'louisros:changeSSID' :
             
-            #global ssid 
-            #global key
-            #global phase
-            ssid = "truc" 
-            key = "machin"
+ 
+            global phase
             phase = 0
             hermes.publish_continue_session(intentMessage.session_id,"nouvel S S I D premier caractère",["louisros:signe","louisros:keyOK"])
                                            
@@ -43,6 +40,8 @@ def intents_callback(hermes, intentMessage) :
                   
                   hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe","louisros:keyOK"])
             else:
+                  global ssid
+                  global key
                   if phase == 0 :
                         ssid = n
                         phase = 1                                                             
