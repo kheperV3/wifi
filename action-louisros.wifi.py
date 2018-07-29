@@ -24,7 +24,6 @@ def intents_callback(hermes, intentMessage) :
             s = ""
             m = ""
             t = ""
-            n = ""
             if len(intentMessage.slots.s):
                   s = intentMessage.slots.s.first().value 
             if len(intentMessage.slots.m):     
