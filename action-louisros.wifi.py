@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 from hermes_python.hermes import Hermes
-import time
-import datetime
-import string
+#import time
+#import datetime
+#import string
 
 MQTT_IP_ADDR = "localhost"
 MQTT_PORT = 1883
