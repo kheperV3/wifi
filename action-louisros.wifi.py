@@ -24,6 +24,7 @@ def intents_callback(hermes, intentMessage) :
   
 
     if intentMessage.intent.intent_name == 'louisros:changeSSID' :
+            hermes.publish_end_session(intentMessage.session_id,"sur la bonne voie")
             global ssid 
             global key
             global phase
