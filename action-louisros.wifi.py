@@ -39,8 +39,7 @@ def intents_callback(hermes, intentMessage) :
                   if m != "" :
                         s = m[0]
                   if t == 'grand' :
-                        s = string.upper(s) 
-                        
+                        s = string.upper(s)                     
                   n = n + s  
                   
                   hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe","louisros:keyOK"])
@@ -71,7 +70,9 @@ def intents_callback(hermes, intentMessage) :
       
     elif intentMessage.intent.intent_name == 'louisros:changeKEY' :
             hermes.publish_continue_session(intentMessage.session_id,"nouvelle clé premier caractère",["louisros:signe","louisros:changeSSID"])
- if __name__ == "__main__":
+      
+
+if __name__ == "__main__":
     with Hermes(MQTT_ADDR) as h:           
             h.subscribe_intents(intents_callback).start()
         
