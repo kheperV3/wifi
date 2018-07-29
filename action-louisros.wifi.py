@@ -14,9 +14,9 @@ def intents_callback(hermes, intentMessage) :
  
     if intentMessage.intent.intent_name == 'louisros:changeSSID' :
             
-            global ssid 
-            global key
-            global phase
+            #global ssid 
+            #global key
+            #global phase
             ssid = "truc" 
             key = "machin"
             phase = 0
