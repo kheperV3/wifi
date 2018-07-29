@@ -13,14 +13,13 @@ MQTT_ADDR = "{}:{}".format(MQTT_IP_ADDR, str(MQTT_PORT))
 def intents_callback(hermes, intentMessage) : 
  
     if intentMessage.intent.intent_name == 'louisros:changeSSID' :
-            hermes.publish_end_session(intentMessage.session_id,"sur la bonne voie")
+            
             global ssid 
             global key
             global phase
             ssid = "" 
             key = ""
             phase = 0
-            hermes.publish_end_session(intentMessage.session_id,"sur la bonne voie")
             hermes.publish_continue_session(intentMessage.session_id,"nouvel SSID premier caractère",["louisros:signe","louisros:keyOK"])
                                            
       
