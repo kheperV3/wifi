@@ -10,7 +10,6 @@ MQTT_IP_ADDR = "localhost"
 MQTT_PORT = 1883
 MQTT_ADDR = "{}:{}".format(MQTT_IP_ADDR, str(MQTT_PORT))
 
-
 def intents_callback(hermes, intentMessage) : 
  
     if intentMessage.intent.intent_name == 'louisros:changeSSID' :
@@ -44,7 +43,7 @@ def intents_callback(hermes, intentMessage) :
                         
                   n = n + s  
                   
-                  hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe","louisros:keyOK")
+                  hermes.publish_continue_session(intentMessage.session_id,"suivant",["louisros:signe","louisros:keyOK"])
             else:
                   if phase == 0 :
                         ssid = n
@@ -72,7 +71,7 @@ def intents_callback(hermes, intentMessage) :
       
     elif intentMessage.intent.intent_name == 'louisros:changeKEY' :
             hermes.publish_continue_session(intentMessage.session_id,"nouvelle clé premier caractère",["louisros:signe","louisros:changeSSID"])
-if __name__ == "__main__":
+ if __name__ == "__main__":
     with Hermes(MQTT_ADDR) as h:           
         h.subscribe_intents(intents_callback).start()
         
