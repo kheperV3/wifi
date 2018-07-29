@@ -57,7 +57,7 @@ def intents_callback(hermes, intentMessage) :
             if ok != "oui":
                   hermes.publish_end_session(intentMessage.session_id, "mise à jour abandonnée")
             else:
-                  hermes.publish_continue_session(intentMessage.session_id,"nouvelle clé",["louisros:changeKEY"])
+                  hermes.publish_continue_session(intentMessage.session_id,"et maintenant saisie de la clé ou phrase secrète",["louisros:changeKEY"])
       
     elif intentMessage.intent.intent_name == 'louisros:keyOK' :   
             ok = intentMessage.slots.ok.first().value 
