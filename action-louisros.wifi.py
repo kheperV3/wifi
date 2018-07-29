@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 from hermes_python.hermes import Hermes
-#import time
-#import datetime
-#import string
+import time
+import datetime
+import string
 
 MQTT_IP_ADDR = "localhost"
 MQTT_PORT = 1883
@@ -21,13 +21,12 @@ def CString(s):
       return s 
 
 def intents_callback(hermes, intentMessage) : 
-  
-
+ 
     if intentMessage.intent.intent_name == 'louisros:changeSSID' :
             hermes.publish_end_session(intentMessage.session_id,"sur la bonne voie")
-            global ssid 
-            global key
-            global phase
+            #global ssid 
+            #global key
+            #global phase
             ssid = "" 
             key = ""
             phase = 0
@@ -40,7 +39,6 @@ def intents_callback(hermes, intentMessage) :
             m = ""
             t = ""
             n = ""
-      
             if len(intentMessage.slots.s):
                   s = intentMessage.slots.s.first().value 
             if len(intentMessage.slots.m):     
@@ -59,8 +57,9 @@ def intents_callback(hermes, intentMessage) :
             else:
                   if phase == 0 :
                         ssid = n
+                        phase = 1                                                             
                         hermes.publish_continue_session(intentMessage.session_id,"Ce nom de SSID est-il correct? ",["louisros:ssidOK"])
-                        phase = 1
+
                   else:
                         key = n
                         hermes.publish_continue_session(intentMessage.session_id,"Validez vous cette clé? ",["louisros:keyOK"])
