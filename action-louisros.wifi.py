@@ -10,23 +10,14 @@ MQTT_IP_ADDR = "localhost"
 MQTT_PORT = 1883
 MQTT_ADDR = "{}:{}".format(MQTT_IP_ADDR, str(MQTT_PORT))
 
-def PyString(s) :
-      if s[len(s)-1] == '\0' :
-            s = s[0:len(s)-1]
-      return s
-      
-def CString(s):
-      if s[len(s)-1] != '\0' :
-            s = s + '\0'
-      return s 
 
 def intents_callback(hermes, intentMessage) : 
  
     if intentMessage.intent.intent_name == 'louisros:changeSSID' :
             hermes.publish_end_session(intentMessage.session_id,"sur la bonne voie")
-            #global ssid 
-            #global key
-            #global phase
+            global ssid 
+            global key
+            global phase
             ssid = "" 
             key = ""
             phase = 0
@@ -58,18 +49,18 @@ def intents_callback(hermes, intentMessage) :
                   if phase == 0 :
                         ssid = n
                         phase = 1                                                             
-                        hermes.publish_continue_session(intentMessage.session_id,"Ce nom de SSID est-il correct? ",["louisros:ssidOK"])
+                        hermes.publish_continue_session(intentMessage.session_id,"Ce nom de SSID est-il correct? ",["louisros:ssidOK","louisros:changeSSID"])
 
                   else:
                         key = n
-                        hermes.publish_continue_session(intentMessage.session_id,"Validez vous cette clé? ",["louisros:keyOK"])
+                        hermes.publish_continue_session(intentMessage.session_id,"Validez vous cette clé? ",["louisros:keyOK","louisros:changeSSID"])
                         
     elif intentMessage.intent.intent_name == 'louisros:ssidOK' :
             ok = intentMessage.slots.ok.first().value 
             if ok != "oui":
                   hermes.publish_end_session(intentMessage.session_id, "mise à jour abandonnée")
             else:
-                  hermes.publish_continue_session(intentMessage.session_id,"nouvelle clé",["louisros:changeKEY"])
+                  hermes.publish_continue_session(intentMessage.session_id,"nouvelle clé",["louisros:changeKEY","louisros:changeSSID"])
       
     elif intentMessage.intent.intent_name == 'louisros:keyOK' :   
             ok = intentMessage.slots.ok.first().value 
@@ -80,7 +71,7 @@ def intents_callback(hermes, intentMessage) :
                   hermes.publish_end_session(intentMessage.session_id,r)
       
     elif intentMessage.intent.intent_name == 'louisros:changeKEY' :
-            hermes.publish_continue_session(intentMessage.session_id,"nouvelle clé premier caractère",["louisros:signe"])
+            hermes.publish_continue_session(intentMessage.session_id,"nouvelle clé premier caractère",["louisros:signe","louisros:changeSSID"])
 if __name__ == "__main__":
     with Hermes(MQTT_ADDR) as h:           
         h.subscribe_intents(intents_callback).start()
