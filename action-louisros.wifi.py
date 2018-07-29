@@ -17,8 +17,8 @@ def intents_callback(hermes, intentMessage) :
             global ssid 
             global key
             global phase
-            ssid = "" 
-            key = ""
+            ssid = "truc" 
+            key = "machin"
             phase = 0
             hermes.publish_continue_session(intentMessage.session_id,"nouvel S S I D premier caractère",["louisros:signe","louisros:keyOK"])
                                            
@@ -64,7 +64,7 @@ def intents_callback(hermes, intentMessage) :
             if ok != "oui":
                   hermes.publish_end_session(intentMessage.session_id, "mise à jour abandonnée")
             else:
-                  r = ssid + "  " + key
+                  r = ssid + " et " + key
                   hermes.publish_end_session(intentMessage.session_id,r)
       
     elif intentMessage.intent.intent_name == 'louisros:changeKEY' :
