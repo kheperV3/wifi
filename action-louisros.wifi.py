@@ -66,11 +66,15 @@ def intents_callback(hermes, intentMessage) :
             if ok != "oui":
                   hermes.publish_end_session(intentMessage.session_id, "mise à jour abandonnée")
             else:
-                  ssid = '\\"' + ssid + '\\"'
-                  key = '\\"' + key + '\\"'
-                  r = 'sudo echo \"\n\nnetwork = {\nssid=' + ssid + '\npsk=' + key + '\n}" >>/etc/wpa_supplicant/wpa_supplicant.conf'
-                  os.system (r)
+                  ssid = '\"' + ssid + '\"'
+                  key = '\"' + key + '\"'
+                  r = '\n\nnetwork = {\nssid=' + ssid + '\npsk=' + key + '\n}'
 
+                  fv =  open("/etc/wpa_supplicant/wpa_supplicant.conf","a")
+                  fv.write(r)
+                  fv.close()
+
+ 
                   hermes.publish_end_session(intentMessage.session_id, "mise à jour effectuée")
       
     elif intentMessage.intent.intent_name == 'louisros:changeKEY' :
