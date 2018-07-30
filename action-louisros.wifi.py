@@ -47,11 +47,11 @@ def intents_callback(hermes, intentMessage) :
                         ssid = n
                         n = ""
                         phase = 1                                                             
-                        hermes.publish_continue_session(intentMessage.session_id,"Ce nom de S S I D est-il correct? ",["louisros:ssidOK","louisros:changeSSID"])
+                        hermes.publish_continue_session(intentMessage.session_id,"Ce nom de S S I D est-il correct?",["louisros:ssidOK","louisros:changeSSID"])
 
                   else:
                         key = n
-                        hermes.publish_continue_session(intentMessage.session_id,"Validez vous cette clé? ",["louisros:keyOK","louisros:changeSSID"])
+                        hermes.publish_continue_session(intentMessage.session_id,"Validez vous cette clé?",["louisros:keyOK","louisros:changeSSID"])
                         
     elif intentMessage.intent.intent_name == 'louisros:ssidOK' :
             ok = intentMessage.slots.ok.first().value 
