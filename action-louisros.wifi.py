@@ -5,6 +5,7 @@ from hermes_python.hermes import Hermes
 import time
 import datetime
 import string
+import os
 
 MQTT_IP_ADDR = "localhost"
 MQTT_PORT = 1883
