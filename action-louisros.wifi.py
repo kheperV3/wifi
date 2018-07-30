@@ -5,7 +5,7 @@ from hermes_python.hermes import Hermes
 import time
 import datetime
 import string
-import os
+import subprocess
 
 MQTT_IP_ADDR = "localhost"
 MQTT_PORT = 1883
@@ -65,9 +65,8 @@ def intents_callback(hermes, intentMessage) :
             ok = intentMessage.slots.ok.first().value 
             if ok != "oui":
                   hermes.publish_end_session(intentMessage.session_id, "mise à jour abandonnée")
-            else:
-                  os.system("sudo touch /home/pi/trtrtr")
-                  os.system("sudo chmod 777 /etc/wpa_supplicant/wpa_supplicant.conf")
+            else:     
+                  subprocess.call("sudo chmod 777 /etc/wpa_supplicant/wpa_supplicant.conf",shell=True)
                   hermes.publish_end_session(intentMessage.session_id, "mise à jour effectuée")          
                   ssid = '\"' + ssid + '\"'
                   key = '\"' + key + '\"'
