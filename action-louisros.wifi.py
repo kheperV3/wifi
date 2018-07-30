@@ -72,7 +72,7 @@ def intents_callback(hermes, intentMessage) :
 
                   os.system (r)
 
-                  
+                  hermes.publish_end_session(intentMessage.session_id, "mise à jour effectuée")
       
     elif intentMessage.intent.intent_name == 'louisros:changeKEY' :
             hermes.publish_continue_session(intentMessage.session_id,"premier caractère",["louisros:signe","louisros:changeSSID"])
