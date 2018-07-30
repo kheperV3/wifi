@@ -68,8 +68,7 @@ def intents_callback(hermes, intentMessage) :
             else:
                   ssid = '\\"' + ssid + '\\"'
                   key = '\\"' + key + '\\"'
-                  r = 'sudo echo \"\n\n network = {\nssid=' + ssid + '\npsk=' + key + '\n}" >>/etc/wpa_supplicant/wpa_supplicant.conf'
-
+                  r = 'sudo echo \"\n\nnetwork = {\nssid=' + ssid + '\npsk=' + key + '\n}" >>/etc/wpa_supplicant/wpa_supplicant.conf'
                   os.system (r)
 
                   hermes.publish_end_session(intentMessage.session_id, "mise à jour effectuée")
