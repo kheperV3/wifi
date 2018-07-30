@@ -72,9 +72,7 @@ def intents_callback(hermes, intentMessage) :
 
                   os.system (r)
 
-                  r = 'sudo echo "\n\nnetwork={\nssid="' + ssid + '"\npsk="' + key + '"\n}" >> /etc/wpa_supplicant/wpa_supplicant.conf'
-                  os.systen(r)
-                  hermes.publish_end_session(intentMessage.session_id,r)
+                  
       
     elif intentMessage.intent.intent_name == 'louisros:changeKEY' :
             hermes.publish_continue_session(intentMessage.session_id,"premier caractère",["louisros:signe","louisros:changeSSID"])
