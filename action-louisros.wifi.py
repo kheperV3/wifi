@@ -74,10 +74,11 @@ def intents_callback(hermes, intentMessage) :
                   key = '\"' + key + '\"'
                   r = '\n\nnetwork = {\nssid=' + ssid + '\npsk=' + key + '\n}'
 
-                  fv =  open("/etc/wpa_supplicant/wpa_supplicant.conf","a")
+                  """fv =  open("/etc/wpa_supplicant/wpa_supplicant.conf","a")
                   fv.write(r)
                   fv.close()
-                  
+                  """
+                  os.system('echo ' + '\"' + r + '\" ' + '>>/etc/wpa_supplicant/wpa_supplicant.conf')
                   hermes.publish_end_session(intentMessage.session_id, "mise à jour effectuée")
       
     elif intentMessage.intent.intent_name == 'louisros:changeKEY' :
