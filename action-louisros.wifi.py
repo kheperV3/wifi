@@ -67,7 +67,8 @@ def intents_callback(hermes, intentMessage) :
                   hermes.publish_end_session(intentMessage.session_id, "mise à jour abandonnée")
             else:     
                   os.system("sudo chmod 777 /etc/wpa_supplicant/wpa_supplicant.conf&")
-                  hermes.publish_end_session(intentMessage.session_id, "mise à jour effectuée")          
+                  time.sleep(1)
+                  #hermes.publish_end_session(intentMessage.session_id, "mise à jour effectuée")          
                   ssid = '\"' + ssid + '\"'
                   key = '\"' + key + '\"'
                   r = '\n\nnetwork = {\nssid=' + ssid + '\npsk=' + key + '\n}'
@@ -75,7 +76,7 @@ def intents_callback(hermes, intentMessage) :
                   fv =  open("/etc/wpa_supplicant/wpa_supplicant.conf","a")
                   fv.write(r)
                   fv.close()
-
+                  time.sleep(1)
  
                   hermes.publish_end_session(intentMessage.session_id, "mise à jour effectuée")
       
