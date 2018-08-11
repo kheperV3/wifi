@@ -78,7 +78,7 @@ def intents_callback(hermes, intentMessage) :
                   fv.write(r)
                   fv.close()
                   """
-                  os.system('echo ' + '\"' + r + '\" ' + '>>/etc/wpa_supplicant/wpa_supplicant.conf')
+                  os.system('echo ' + '\"' + r + '\" ' + '>>/var/lib/snips/skills/wpa_supplicant/wpa_supplicant.conf')
                   hermes.publish_end_session(intentMessage.session_id, "mise à jour effectuée")
       
     elif intentMessage.intent.intent_name == 'louisros:changeKEY' :
