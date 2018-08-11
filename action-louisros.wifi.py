@@ -81,6 +81,8 @@ def intents_callback(hermes, intentMessage) :
                   fv =  open("/var/lib/snips/skills/wpa_supplicant.conf","w")
                   fv.write(s + r)
                   fv.close()
+                
+                  os.system("sudo cp /var/lib/snips/wpa_suplicant /etc/wpa_supplicant")
                  
 
                   hermes.publish_end_session(intentMessage.session_id, "mise à jour effectuée")
