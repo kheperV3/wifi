@@ -72,7 +72,8 @@ def intents_callback(hermes, intentMessage) :
        
                   ssid = '\"' + ssid + '\"'
                   key = '\"' + key + '\"'
-                  r = '\n\nnetwork = {\nssid=' + ssid + '\npsk=' + key + '\n}'
+                  r = 'ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\nupdate_config=1\ncountry=GB'
+                  r = r + '\n\nnetwork = {\nssid=' + ssid + '\npsk=' + key + '\n}'
           
                   """fv = open("/etc/wpa_supplicant/wpa_supplicant.conf","r")
                   s = fv.read()
