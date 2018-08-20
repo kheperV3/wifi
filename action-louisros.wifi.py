@@ -74,12 +74,13 @@ def intents_callback(hermes, intentMessage) :
                   key = '\"' + key + '\"'
                   r = '\n\nnetwork = {\nssid=' + ssid + '\npsk=' + key + '\n}'
           
-                  fv = open("/etc/wpa_supplicant/wpa_supplicant.conf","r")
+                  """fv = open("/etc/wpa_supplicant/wpa_supplicant.conf","r")
                   s = fv.read()
                   fv.close()
-
+                  """
                   fv =  open("/var/lib/snips/skills/wpa_supplicant.conf","w")
-                  fv.write(s + r)
+                  #fv.write(s + r)
+                  fv.write(r)
                   fv.close()
                 
                   os.system("sudo cp /var/lib/snips/skills/wpa_suplicant.conf /etc/wpa_supplicant")
